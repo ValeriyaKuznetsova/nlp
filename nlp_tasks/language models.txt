@@ -1,0 +1,44 @@
+Языковые модели на n-граммах.
+
+Напишите простую реализацию языковых моделей:
+
+def tokenize(text):
+	"""Возвращает список токенов; игнорирует знаки препинания"""
+	tokens = []
+	# ваш код здесь
+	return tokens
+	
+def get_ngram_counts(words, n):
+	"""Пройдя по words (списку токенов без знаков препинания), функция возвращает словарь вида {ngram: count} для всех n-граммов, а также n-граммов низшего порядка.
+	Например, get_ngram_counts(words, 3) возвращает словарь частотности всех триграммов, биграммов и юниграммов, считая их по списку words."""
+	counts = {}
+	# ваш код здесь
+	return tokens
+	
+def get_prob(text, ngrams, n, corp_size):
+	"""Возвращает вероятность строки text, основываясь на словаре ngrams и оценивая параметры модели с помощью максимального правдоподобия. n - длина n-граммов в модели (напр. 1, 2 или 3), corp_size - количество токенов в корпусе (для оценки параметров юниграмм-модели)."""
+	prob = 1.0
+	# ваш код здесь
+	return prob
+
+Пример работы (на основе одного из слайдов лекции):
+
+corpus = 'I saw a cat and a dog. The cat was sleeping, and the dog was awake. I woke up the cat.'
+words = tokenize(corpus)
+corp_size = len(words)
+ngrams = get_ngram_counts(words, 2)
+tests = ('a cat', 'the cat', 'the dog', 'the woke', 'the cat was awake')
+for t in tests:
+	print(t, get_prob(t, ngrams, 2, corp_size))
+
+Вывод:
+
+a cat 0.5
+the cat 0.6666666666666666
+the dog 0.3333333333333333
+the woke 0.0
+the cat was awake 0.1111111111111111
+
+Для тех, кто справится с заданием, ещё можете: 
+- использовать логарифмическое пространство в функции get_prob; 
+- "поиграть" с другими корпусами, например, Брауновским (высылал вам его раньше).
